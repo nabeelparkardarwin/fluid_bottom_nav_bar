@@ -15,7 +15,7 @@ class FluidNavBarDemo extends StatefulWidget {
 }
 
 class _FluidNavBarDemoState extends State {
-  Widget _child;
+  Widget? _child;
 
   @override
   void initState() {
@@ -33,29 +33,18 @@ class _FluidNavBarDemoState extends State {
         body: _child,
         bottomNavigationBar: FluidNavBar(
           icons: [
+            FluidNavBarIcon(backgroundColor: Color(0xFF4285F4), extras: {"label": "home"}),
             FluidNavBarIcon(
-                svgPath: "assets/home.svg",
-                backgroundColor: Color(0xFF4285F4),
-                extras: {"label": "home"}),
-            FluidNavBarIcon(
-                icon: Icons.bookmark_border,
-                backgroundColor: Color(0xFFEC4134),
-                extras: {"label": "bookmark"}),
-            FluidNavBarIcon(
-                icon: Icons.apps,
-                backgroundColor: Color(0xFFFCBA02),
-                extras: {"label": "partner"}),
-            FluidNavBarIcon(
-                svgPath: "assets/conference.svg",
-                backgroundColor: Color(0xFF34A950),
-                extras: {"label": "conference"}),
+                icon: Icons.bookmark_border, backgroundColor: Color(0xFFEC4134), extras: {"label": "bookmark"}),
+            FluidNavBarIcon(icon: Icons.apps, backgroundColor: Color(0xFFFCBA02), extras: {"label": "partner"}),
+            FluidNavBarIcon(backgroundColor: Color(0xFF34A950), extras: {"label": "conference"}),
           ],
           onChange: _handleNavigationChange,
           style: FluidNavBarStyle(iconUnselectedForegroundColor: Colors.white),
           scaleFactor: 1.5,
           defaultIndex: 1,
           itemBuilder: (icon, item) => Semantics(
-            label: icon.extras["label"],
+            label: icon.extras?["label"],
             child: item,
           ),
         ),

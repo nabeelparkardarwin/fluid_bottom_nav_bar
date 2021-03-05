@@ -4,17 +4,17 @@ class PlaceholderImage extends StatelessWidget {
   final double width;
   final double height;
   final double cornerRadius;
-  final Color color;
-  final Color backgroundColor;
+  final Color? color;
+  final Color? backgroundColor;
 
-  const PlaceholderImage(
-      {Key key,
-      this.cornerRadius = 4,
-      this.color,
-      this.backgroundColor,
-      this.width = 100,
-      this.height = 100})
-      : super(key: key);
+  const PlaceholderImage({
+    Key? key,
+    this.cornerRadius = 4,
+    this.color,
+    this.backgroundColor,
+    this.width = 100,
+    this.height = 100,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,7 @@ class _ImagePainter extends CustomPainter {
       ..color = color;
     //Draw mountains, size to width
     var width = size.width * .6;
-    canvas.translate(
-        size.width / 2 - width / 2, size.height / 2 + (width * .7) / 2);
+    canvas.translate(size.width / 2 - width / 2, size.height / 2 + (width * .7) / 2);
     var path = Path()
       ..lineTo(width * .4, -width * .66)
       ..lineTo(width * .63, -width * .29)
@@ -64,8 +63,7 @@ class _ImagePainter extends CustomPainter {
     paintForeground.style = PaintingStyle.fill;
     canvas.drawPath(path, paintForeground);
     //Draw sun
-    canvas.drawCircle(
-        Offset(width * .9, -width * .7), width * .1, paintForeground);
+    canvas.drawCircle(Offset(width * .9, -width * .7), width * .1, paintForeground);
   }
 
   @override
